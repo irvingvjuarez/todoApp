@@ -10,7 +10,8 @@ const InitialState = () => ({
   openModal: false,
   color4Picker: "#0569ff",
   deleteModal: false,
-  categoriesVisible: true
+  categoriesVisible: true,
+  searched: ""
 });
 
 const reducer = (state, { type, payload }) => {
@@ -61,6 +62,11 @@ const reducer = (state, { type, payload }) => {
         ...state,
         openModal: false
       };
+    case actionTypes.searched:
+      return {
+        ...state,
+        searched: payload
+      }
     default:
       return {
         ...state
@@ -75,7 +81,8 @@ const actionTypes = {
   bothNoModal: "BOTH_NO_MODAL",
   bothModal: "BOTH_MODAL",
   itemsOnly: "ITEMS_ONLY",
-  modalOpened: "MODAL_OPENED"
+  modalOpened: "MODAL_OPENED",
+  searched: "SEARCHED_ON"
 };
 
 export { InitialState, reducer, actionTypes };

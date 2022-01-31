@@ -22,7 +22,8 @@ function Home() {
     categories,
     items,
     columns,
-    openModal
+    openModal,
+    searched
   } = state;
 
   if (!authName) {
@@ -36,49 +37,47 @@ function Home() {
           What´s up, {authNickName ? authNickName : authName}?
         </h2>
       </TodoGreetings>
-      <TodoSearch>
-        <input
-          onChange={(e) => console.log}
-          value=""
-          className="todoSearch"
-          type="text"
-          placeholder="Search a task..."
-        />
-      </TodoSearch>
+      <TodoSearch state={state} dispatch={dispatch} />
 
-      <TodoCategories dispatch={dispatch}>
-        {categories.map((item) => (
-          <TodoCategoryItem
-            key={item.id}
-            name={item.label}
-            tasks={item.tasks}
-            completed={item.completed}
-            color={item.color}
-            arr={item.arr}
-            categories={categories}
-            items={items}
-            dispatch={dispatch}
-          />
-        ))}
-      </TodoCategories>
+      {searched ? (
+        <p>Hi</p>
+      ) : (
+        <React.Fragment>
+          <TodoCategories dispatch={dispatch}>
+            {categories.map((item) => (
+              <TodoCategoryItem
+                key={item.id}
+                name={item.label}
+                tasks={item.tasks}
+                completed={item.completed}
+                color={item.color}
+                arr={item.arr}
+                categories={categories}
+                items={items}
+                dispatch={dispatch}
+              />
+            ))}
+          </TodoCategories>
 
-      <TodoList>
-        <div className="addCta-container">
-          <h2 className="subtitle">TODAY'S TASKS</h2>
-        </div>
+          <TodoList>
+            <div className="addCta-container">
+              <h2 className="subtitle">TODAY'S TASKS</h2>
+            </div>
 
-        <section className="todoList__board">
-          {columns.map((column) => (
-            <Column
-              key={column.id}
-              name={column.name}
-              items={items}
-              categories={categories}
-              dispatch={dispatch}
-            />
-          ))}
-        </section>
-      </TodoList>
+            <section className="todoList__board">
+              {columns.map((column) => (
+                <Column
+                  key={column.id}
+                  name={column.name}
+                  items={items}
+                  categories={categories}
+                  dispatch={dispatch}
+                />
+              ))}
+            </section>
+          </TodoList>
+        </React.Fragment>
+      )}
 
       {openModal && (
         <Modal>
