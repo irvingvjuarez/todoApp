@@ -1,0 +1,9 @@
+.todoSearch {
+  width: 100%;
+  padding: 6px;
+  margin: 15px 0;
+  font-size: 1.8rem;
+  border-radius: var(--radius);
+  border: none;
+  outline-color: var(--contrast-color);
+}

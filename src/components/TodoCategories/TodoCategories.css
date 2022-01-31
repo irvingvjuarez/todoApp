@@ -1,0 +1,38 @@
+.categories hr {
+  border: 1px solid var(--secondary-color);
+  margin-top: 9px;
+  border-radius: var(--radius);
+}
+.subtitle {
+  font-size: 1.6rem;
+}
+.addCta-container__title {
+  color: var(--secondary-color);
+  display: flex;
+  align-items: center;
+}
+.addCta-container__title svg {
+  margin-right: 5px;
+  transition: transform 0.5s;
+}
+.categories__container {
+  display: flex;
+  flex-wrap: wrap;
+}
+.addCta-container__title:hover ~ .addCta {
+  background-color: initial;
+  color: var(--secondary-color);
+}
+.categories__container--minimized {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.categories__container--minimized > .category__item {
+  width: 100%;
+  display: inline-block;
+}
+.categories__container--minimized .category__header {
+  display: none;
+}

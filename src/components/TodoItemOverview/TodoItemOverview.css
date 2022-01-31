@@ -1,0 +1,20 @@
+.todoItemOverview {
+  display: flex;
+  padding: 9px 0;
+  font-size: 1.5rem;
+  text-align: start;
+}
+.todoItemOverview > span {
+  font-style: italic;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-left: 5px;
+  display: grid;
+  place-content: center;
+}
+/* .todoItemOverview > span.status {
+  color: red;
+}
+.todoItemOverview > span.done {
+  color: var(--success);
+} */

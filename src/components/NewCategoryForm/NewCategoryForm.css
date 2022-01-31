@@ -1,0 +1,18 @@
+.addFormContainer .addFormContainer__mainInput {
+  border: 1px solid var(--secondary-color);
+  border-radius: var(--radius);
+}
+.colorPicker {
+  display: flex;
+  margin: 12px 0;
+}
+.colorPicker__template {
+  width: 40px;
+  height: 40px;
+  margin: 5px 9px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+.colorPicker__picker {
+  padding: 0 9px;
+}

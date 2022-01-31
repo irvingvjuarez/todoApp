@@ -1,0 +1,29 @@
+.Item {
+  padding: 9px;
+  margin: 9px 0;
+  background-color: white;
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+.Item:hover {
+  box-shadow: var(--shadow-item);
+}
+.Item:hover svg {
+  opacity: 1;
+}
+.Item > h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+.Item__footer {
+  margin: 3px 0;
+}
+.Item svg {
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: move;
+  opacity: 0.5;
+  z-index: 2;
+  margin: 9px;
+}
