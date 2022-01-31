@@ -174,7 +174,7 @@ html::-webkit-scrollbar-thumb {
 .thirdtitle {
   font-weight: bold;
   color: var(--secondary-color);
-  font-size: 1.4rem;
+  font-size: 1.7rem;
 }
 .deteleButton {
   background-color: transparent;
@@ -196,5 +196,8 @@ html::-webkit-scrollbar-thumb {
   }
   .categories__container--minimized > .category__item {
     width: 49%;
+  }
+  .Item svg{
+    display: initial;
   }
 }
