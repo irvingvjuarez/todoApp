@@ -40,7 +40,11 @@ function Home() {
       <TodoSearch state={state} dispatch={dispatch} />
 
       {searched ? (
-        <p>Hi</p>
+        <React.Fragment>
+          {items.map(item => (
+            <p key={item.id}>{item.text}</p>
+          ))}
+        </React.Fragment>
       ) : (
         <React.Fragment>
           <TodoCategories dispatch={dispatch}>

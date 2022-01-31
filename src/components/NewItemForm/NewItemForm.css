@@ -1,3 +1,6 @@
 .newItemForm input.addFormContainer__mainInput {
   border: none;
 }
+.formContainer__select{
+  font-size: 1.4rem;
+}

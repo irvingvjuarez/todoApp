@@ -191,7 +191,7 @@ html::-webkit-scrollbar-thumb {
 }
 
 @media screen and (min-width: 700px) {
-  .todoList__board {
+  .todoList .todoList__board {
     flex-wrap: initial;
   }
   .categories__container--minimized > .category__item {
