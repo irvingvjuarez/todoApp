@@ -1,3 +1,6 @@
+import { actionTypes } from "../../customHooks/useReducer";
+import { onItemChangesInColumn } from "../../utils/data";
+
 export const getAnswer = (selectedItem) => {
   return {
     title: selectedItem.text,
@@ -40,3 +43,26 @@ export const getNewColumn = (e, startPoint, columnTag) => {
 
   return newColumn;
 };
+
+export const onDetailModal = (items, id, dispatch) => {
+  let selectedItem = items.find((item) => item.id === id);
+  dispatch({
+    type: actionTypes.modalOpened,
+    payload: ["showItemDetail", getAnswer(selectedItem)]
+  });
+}
+
+export const setEndPoint = (e, startPoint, columnTag, id, category, items, categories, dispatch) => {
+  let newColumn = getNewColumn(e, startPoint, columnTag);
+  let newValues = onItemChangesInColumn(
+    newColumn,
+    id,
+    category,
+    items,
+    categories
+  );
+  dispatch({
+    type: actionTypes.bothNoModal,
+    payload: { CATEGORIES: newValues[0], ITEMS: newValues[1] }
+  });
+}

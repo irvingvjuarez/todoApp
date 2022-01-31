@@ -13,6 +13,7 @@ import TodoCategories from "../../components/TodoCategories";
 import TodoCategoryItem from "../../components/TodoCategoryItem";
 import Modal from "../../components/Modal";
 import Column from "../../components/Column";
+import { Item } from "../../components/Item";
 
 function Home() {
   const [state, dispatch] = React.useReducer(reducer, InitialState());
@@ -41,9 +42,21 @@ function Home() {
 
       {searched ? (
         <React.Fragment>
-          {items.map(item => (
-            <p key={item.id}>{item.text}</p>
-          ))}
+          {items.map(item => {
+            if(item.text.toLowerCase().includes(searched)){
+              return (
+                <Item 
+                  key={item.id}
+                  id={item.id}
+                  title={item.text}
+                  category={item.category}
+                  items={items}
+                  columnTag={item.columnTag}
+                  dispatch={dispatch}
+                />
+              )
+            }
+          })}
         </React.Fragment>
       ) : (
         <React.Fragment>

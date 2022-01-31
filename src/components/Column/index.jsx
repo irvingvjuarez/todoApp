@@ -27,6 +27,7 @@ function Column({ name, items, categories, dispatch }) {
           columnTag={item.columnTag}
           categories={categories}
           dispatch={dispatch}
+          draggable={true}
         />
       ))}
       <div onClick={handleAddingItemModal} className="Column__plusOneCta">
