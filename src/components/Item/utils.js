@@ -15,29 +15,39 @@ export const getAnswer = (selectedItem) => {
 };
 
 export const getNewColumn = (e, startPoint, columnTag) => {
+  const minimumShift = document.querySelector(".Item").offsetWidth / 2;
+
   let endPoint = e.clientX;
   let newColumn;
   if (endPoint > startPoint) {
-    switch (columnTag) {
-      case "Backlog":
-        newColumn = "Progress";
-        break;
-      case "Progress":
-        newColumn = "Done";
-        break;
-      default:
-        newColumn = "Done";
+    if(endPoint - startPoint > minimumShift){
+      switch (columnTag) {
+        case "Backlog":
+          newColumn = "Progress";
+          break;
+        case "Progress":
+          newColumn = "Done";
+          break;
+        default:
+          newColumn = "Done";
+      }
+    }else{
+      newColumn = columnTag
     }
   } else if (endPoint < startPoint) {
-    switch (columnTag) {
-      case "Done":
-        newColumn = "Progress";
-        break;
-      case "Progress":
-        newColumn = "Backlog";
-        break;
-      default:
-        newColumn = "Backlog";
+    if(startPoint - endPoint > minimumShift){
+      switch (columnTag) {
+        case "Done":
+          newColumn = "Progress";
+          break;
+        case "Progress":
+          newColumn = "Backlog";
+          break;
+        default:
+          newColumn = "Backlog";
+      }
+    }else{
+      newColumn = columnTag
     }
   }
 

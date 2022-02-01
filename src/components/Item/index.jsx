@@ -7,6 +7,7 @@ import "./Item.css";
 
 function Item({ id, title, category, items, columnTag, categories, dispatch, draggable }) {
   const [startPoint, setStartPoint] = React.useState(undefined);
+  const position = {x: 0, y: 0}
   const onDragStart = (e) => setStartPoint(e.clientX);
   const handleItemDetailModal = () => onDetailModal(items, id, dispatch);
   const onDragStop = (e) => setEndPoint(e, startPoint, columnTag, id, category, items, categories, dispatch);
@@ -19,6 +20,8 @@ function Item({ id, title, category, items, columnTag, categories, dispatch, dra
           bounds=".todoList__board"
           onStart={onDragStart}
           onStop={onDragStop}
+          axis="x"
+          position={position}
         >
           <div className="Item" onClick={handleItemDetailModal}>
             <h3>{title}</h3>
