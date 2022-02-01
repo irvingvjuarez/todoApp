@@ -180,6 +180,7 @@ categories.forEach(
 
 export const onItemChangesInColumn = (
   newColumnVal,
+  currentColumn,
   itemId,
   itemCategory,
   items,
@@ -194,12 +195,11 @@ export const onItemChangesInColumn = (
   categories = categories.map((category) => {
     if (category.label === itemCategory) {
       let itemIndex = category.arr.findIndex((item) => item.id === itemId);
-      let itemColumnTag = category.arr[itemIndex].columnTag;
 
-      if (newColumnVal === "Done") {
-        category.completed += 1;
-      } else if (itemColumnTag === "Done") {
+      if (currentColumn === "Done") {
         category.completed -= 1;
+      } else if(newColumnVal === "Done"){
+        category.completed += 1;
       }
 
       category.arr[itemIndex].columnTag = newColumnVal;
