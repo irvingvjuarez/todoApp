@@ -2,60 +2,45 @@ import React from "react";
 import Draggable from "react-draggable";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGripVertical } from "@fortawesome/free-solid-svg-icons";
-import { onItemChangesInColumn } from "../../utils/data";
-import { getAnswer, getNewColumn } from "./utils";
-import { actionTypes } from "../../customHooks/useReducer";
+import { onDetailModal, setEndPoint } from "./utils";
 import "./Item.css";
 
-function Item({ id, title, category, items, columnTag, categories, dispatch }) {
+function Item({ id, title, category, items, columnTag, categories, dispatch, draggable }) {
   const [startPoint, setStartPoint] = React.useState(undefined);
-
-  // UPDATERS
-  const handleItemDetailModal = () => {
-    let selectedItem = items.find((item) => item.id === id);
-    dispatch({
-      type: actionTypes.modalOpened,
-      payload: ["showItemDetail", getAnswer(selectedItem)]
-    });
-  };
-  const onDragStart = (e) => {
-    setStartPoint(e.clientX);
-  };
-  const onDragStop = (e) => {
-    let newColumn = getNewColumn(e, startPoint, columnTag);
-    let newValues = onItemChangesInColumn(
-      newColumn,
-      id,
-      category,
-      items,
-      categories
-    );
-    dispatch({
-      type: actionTypes.bothNoModal,
-      payload: { CATEGORIES: newValues[0], ITEMS: newValues[1] }
-    });
-  };
+  const position = {x: 0, y: 0}
+  const onDragStart = (e) => setStartPoint(e.clientX);
+  const handleItemDetailModal = () => onDetailModal(items, id, dispatch);
+  const onDragStop = (e) => setEndPoint(e, startPoint, columnTag, id, category, items, categories, dispatch);
 
   return (
-    <Draggable
-      handle="svg"
-      bounds=".todoList__board"
-      onStart={onDragStart}
-      onStop={onDragStop}
-    >
-      <div className="Item" onClick={handleItemDetailModal}>
-        <h3>{title}</h3>
-
-        <div className="Item__footer">{category}</div>
-
-        <FontAwesomeIcon
-          icon={faGripVertical}
-          color="var(--secondary-color)"
-          size="lg"
-          onClick={(e) => e.stopPropagation()}
-        />
-      </div>
-    </Draggable>
+    <React.Fragment>
+      {draggable ? (
+        <Draggable
+          handle="svg"
+          bounds=".todoList__board"
+          onStart={onDragStart}
+          onStop={onDragStop}
+          axis="x"
+          position={position}
+        >
+          <div className="Item" onClick={handleItemDetailModal}>
+            <h3>{title}</h3>
+            <div className="Item__footer">{category}</div>
+            <FontAwesomeIcon
+              icon={faGripVertical}
+              color="var(--secondary-color)"
+              size="lg"
+              onClick={(e) => e.stopPropagation()}
+            />
+          </div>
+        </Draggable>
+      ) : (
+        <div className="Item" onClick={handleItemDetailModal}>
+          <h3>{title}</h3>
+          <div className="Item__footer">{category}</div>
+        </div>
+      )}
+    </React.Fragment>
   );
 }
 

@@ -37,7 +37,7 @@ main {
 }
 .subtitle {
   color: var(--secondary-color);
-  font-size: 1.6rem;
+  font-size: 1.8rem;
 }
 #modal {
   position: fixed;
@@ -174,7 +174,7 @@ html::-webkit-scrollbar-thumb {
 .thirdtitle {
   font-weight: bold;
   color: var(--secondary-color);
-  font-size: 1.4rem;
+  font-size: 1.7rem;
 }
 .deteleButton {
   background-color: transparent;
@@ -191,10 +191,13 @@ html::-webkit-scrollbar-thumb {
 }
 
 @media screen and (min-width: 700px) {
-  .todoList__board {
+  .todoList .todoList__board {
     flex-wrap: initial;
   }
   .categories__container--minimized > .category__item {
     width: 49%;
+  }
+  .Item svg{
+    display: initial;
   }
 }
