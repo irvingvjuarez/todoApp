@@ -11,7 +11,7 @@ function Item({ id, title, category, items, columnTag, categories, dispatch, dra
   const onDragStart = (e) => setStartPoint(e.clientX);
   const handleItemDetailModal = () => onDetailModal(items, id, dispatch);
   const onDragStop = (e) => setEndPoint(e, startPoint, columnTag, id, category, items, categories, dispatch);
-
+  
   return (
     <React.Fragment>
       {draggable ? (

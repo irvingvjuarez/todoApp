@@ -32,7 +32,7 @@ export const getNewColumn = (e, startPoint, columnTag) => {
           newColumn = "Done";
       }
     }else{
-      newColumn = columnTag
+      return false
     }
   } else if (endPoint < startPoint) {
     if(startPoint - endPoint > minimumShift){
@@ -47,7 +47,7 @@ export const getNewColumn = (e, startPoint, columnTag) => {
           newColumn = "Backlog";
       }
     }else{
-      newColumn = columnTag
+      return false
     }
   }
 
@@ -64,15 +64,19 @@ export const onDetailModal = (items, id, dispatch) => {
 
 export const setEndPoint = (e, startPoint, columnTag, id, category, items, categories, dispatch) => {
   let newColumn = getNewColumn(e, startPoint, columnTag);
-  let newValues = onItemChangesInColumn(
-    newColumn,
-    id,
-    category,
-    items,
-    categories
-  );
-  dispatch({
-    type: actionTypes.bothNoModal,
-    payload: { CATEGORIES: newValues[0], ITEMS: newValues[1] }
-  });
+  if(newColumn){
+    let newValues = onItemChangesInColumn(
+      newColumn,
+      columnTag,
+      id,
+      category,
+      items,
+      categories
+    );
+
+    dispatch({
+      type: actionTypes.bothNoModal,
+      payload: { CATEGORIES: newValues[0], ITEMS: newValues[1] }
+    });
+  }
 }
