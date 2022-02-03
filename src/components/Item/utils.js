@@ -63,6 +63,7 @@ export const onDetailModal = (items, id, dispatch) => {
 }
 
 export const setEndPoint = (e, startPoint, columnTag, id, category, items, categories, dispatch) => {
+  e.target.parentNode.classList.remove("draggedItem")
   let newColumn = getNewColumn(e, startPoint, columnTag);
   if(newColumn){
     let newValues = onItemChangesInColumn(
