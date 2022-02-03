@@ -1,4 +1,5 @@
 .Item {
+  position: relative;
   padding: 12px 9px;
   margin: 9px 0;
   background-color: white;
@@ -8,6 +9,7 @@
 }
 .Item:hover {
   box-shadow: var(--shadow-item);
+  z-index: 1;
 }
 .Item:hover svg {
   opacity: 1;

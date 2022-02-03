@@ -189,6 +189,9 @@ html::-webkit-scrollbar-thumb {
 .arrowUp {
   transform: rotate(180deg);
 }
+.draggedItem{
+  z-index: 4;
+}
 
 @media screen and (min-width: 700px) {
   .todoList .todoList__board {
