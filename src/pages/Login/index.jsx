@@ -51,6 +51,10 @@ function Login() {
   const [categories, setCategories] = React.useState([categoryOptions[0]]);
   const auth = localStorage.getItem("TODO_NAME");
 
+  React.useEffect(() => {
+    document.title = "Login | Todo App"
+  }, [])
+
   if (auth) {
     return <Redirect to="/home" />;
   }
