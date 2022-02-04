@@ -27,6 +27,10 @@ function Home() {
     searched
   } = state;
 
+  React.useEffect(() => {
+    document.title = "Home | Todo App"
+  }, [])
+
   if (!authName) {
     return <Redirect to="/" />;
   }
@@ -42,7 +46,8 @@ function Home() {
 
       {searched ? (
         <React.Fragment>
-          {items.map(item => {
+          {
+          items.map(item => {
             if(item.text.toLowerCase().includes(searched)){
               return (
                 <Item 
@@ -56,7 +61,8 @@ function Home() {
                 />
               )
             }
-          })}
+          })
+          }
         </React.Fragment>
       ) : (
         <React.Fragment>
