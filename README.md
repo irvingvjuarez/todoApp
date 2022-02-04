@@ -1,4 +1,4 @@
-<img src="./public/favicon.ico" alt="Todo App" width="350" height="70">
+<img src="./public/favicon.ico" alt="Todo App" width="100" height="70">
 <h2 style="display: inline-block;">Todo App</h2>
 
 Web App to manage daily life tasks
