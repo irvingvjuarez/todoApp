@@ -20,6 +20,7 @@ function useTodos() {
     authNickName,
     authName,
     search,
+    setSearch,
     openModal,
     setOpenModal,
     color4Picker,

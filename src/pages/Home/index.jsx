@@ -60,6 +60,8 @@ function Home() {
                   dispatch={dispatch}
                 />
               )
+            }else{
+              return null
             }
           })
           }
